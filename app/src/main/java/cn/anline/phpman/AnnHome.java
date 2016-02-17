@@ -1,6 +1,7 @@
 package cn.anline.phpman;
 
 import android.app.Notification;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -90,16 +91,47 @@ public void refesh(){
             startActivity(new Intent(Intent.ACTION_VIEW,anUri));
            return true;
         }
+        if (id == R.id.action_scanQRcode) {
+//                扫一扫
+            Toast.makeText(getApplicationContext(),"网站暂未上线，扫码链接暂时无法处理",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"网站上线，将支持客户端扫描网站二维码",Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (id == R.id.action_compile) {
+//                编译器
+            Toast.makeText(getApplicationContext(),"编译器将在下一个版本中推出",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"极客契约网站上线之后，将推出完美阅读版本",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"这将需要很长的一段开发时间",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"此版本下载量越大，新版本我们将有更大的信心和热情，所有请多多支持！！！",Toast.LENGTH_SHORT).show();
+            return true;
+        }
         if (id == R.id.action_taobao) {
 //                打开安浪创想淘宝店
+        Uri tbUri = Uri.parse("taobao://b.mashort.cn/h.QjVPt?cv=AACqFyoU&sm=f109bb");
 
+            startActivity(new Intent(Intent.ACTION_VIEW, tbUri));
             return true;
         }
+        /*
         if (id == R.id.action_wechat) {
-//打开安浪创想微信
+//            Uri wxUri = Uri.parse("wechat://http://weixin.qq.com/r/gUwXDwzEdFELrUhs9xmT");
+            Uri wxUri = Uri.parse("wechat://contacts/profile/gh_9541b7a3ebfa");
 
+//            startActivity(new Intent(Intent.ACTION_VIEW, wxUri));
+            Intent intent = new Intent(Intent.ACTION_VIEW, wxUri);
+            ComponentName cmp = new ComponentName(" com.tencent.mm ","com.tencent.mm.ui.LauncherUI");
+            intent.setAction(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setComponent(cmp);
+            startActivity(intent);
+
+
+//打开安浪创想微信
+//            "http://qm.qq.com/cgi-bin/qm/qr?k=Xg6LMa-Wnw_Iu1rSQmBhNVu4rlMdHA8W"
             return true;
         }
+        */
         if (id == R.id.action_exit) {
             Toast.makeText(getApplicationContext(),"程序正在退出",Toast.LENGTH_SHORT).show();
             Toast.makeText(getApplicationContext(),"清除此次占用内存....",Toast.LENGTH_SHORT).show();
