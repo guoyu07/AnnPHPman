@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.anline.phpman">
+    package="cn.anline.phpman"
+    android:versionCode="1"
+    android:versionName="0.1-Beta"
+    >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -29,19 +32,12 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
 
-                    <action android:name="android.intent.action.VIEW" />
-                    <category android:name="android.intent.category.DEFAULT" />
-                    <category android:name="android.intent.category.BROWSABLE" />
-                    <data android:scheme="http" android:host="item.taobao.com" android:path="/item.htm" />
-                    <data android:host="item.tmall.com" />
-                    <data android:scheme="taobao" />
-
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" android:host="weixin.com" android:path="/r" />
-                <data android:host="weixin.qq.com" />
-                <data android:scheme="wechat" />
+                    <!--<action android:name="android.intent.action.VIEW" />-->
+                    <!--<category android:name="android.intent.category.DEFAULT" />-->
+                    <!--<category android:name="android.intent.category.BROWSABLE" />-->
+                    <!--<data android:scheme="http" android:host="item.taobao.com" android:path="/item.htm" />-->
+                    <!--<data android:host="item.tmall.com" />-->
+                    <!--<data android:scheme="taobao" />-->
             </intent-filter>
         </activity>
         <activity
@@ -51,8 +47,7 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"></activity>
-        <activity android:name="com.tencent.mm"/>
-        <activity android:name="com.tencent.mm.ui.LauncherUI"/>
+
     </application>
 
 </manifest>
