@@ -2,7 +2,10 @@ package cn.anline.phpman;
 
 import android.app.Notification;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +20,7 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import java.net.URI;
+import java.util.List;
 
 public class AnnHome extends AppCompatActivity {
 
@@ -68,7 +72,19 @@ public void refesh(){
         getMenuInflater().inflate(R.menu.menu_ann_home, menu);
         return true;
     }
-
+//安浪检测安卓程序包安装了没有的方法
+private boolean isAvilible( Context context, String packageName )
+{
+    final PackageManager packageManager = context.getPackageManager();
+    // 获取所有已安装程序的包信息
+    List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);
+    for ( int i = 0; i < pinfo.size(); i++ )
+    {
+        if(pinfo.get(i).packageName.equalsIgnoreCase(packageName))
+            return true;
+    }
+    return false;
+}
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -108,9 +124,16 @@ public void refesh(){
         }
         if (id == R.id.action_taobao) {
 //                打开安浪创想淘宝店
-        Uri tbUri = Uri.parse("taobao://b.mashort.cn/h.QjVPt?cv=AACqFyoU&sm=f109bb");
 
-            startActivity(new Intent(Intent.ACTION_VIEW, tbUri));
+        Uri tbUri = Uri.parse("taobao://b.mashort.cn/h.QjVPt?cv=AACqFyoU&sm=f109bb");
+        Uri tbUri2 = Uri.parse("http://b.mashort.cn/h.QjVPt?cv=AACqFyoU&sm=f109bb");
+//            检测淘宝客户端是否安装 安装则启动淘宝客户端
+            if(isAvilible(AnnHome.this, "com.taobao.taobao")) {
+                startActivity(new Intent(Intent.ACTION_VIEW, tbUri));
+            }else {
+//                未安装则打开本地浏览器
+                startActivity(new Intent(Intent.ACTION_VIEW, tbUri2));
+            }
             return true;
         }
         /*
