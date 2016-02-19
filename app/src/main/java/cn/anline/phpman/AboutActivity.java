@@ -15,8 +15,8 @@ public class AboutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar1);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar1);
+//        setSupportActionBar(toolbar);
 //        WebView webView2 = (WebView)findViewById(R.id.webView2);
 //        webView2.loadUrl("http://www.anline.cn/AboutUs/");
 //        webView2.setWebViewClient(new WebViewClient(){

@@ -2,13 +2,22 @@ package cn.anline.qrcode;
 
 
         import android.app.Activity;
+        import android.content.Intent;
         import android.graphics.Bitmap;
         import android.graphics.BitmapFactory;
+        import android.net.Uri;
         import android.os.Bundle;
         import android.util.TypedValue;
+        import android.view.accessibility.AccessibilityManager;
+        import android.webkit.WebView;
+        import android.webkit.WebViewClient;
         import android.widget.ImageView;
         import android.widget.LinearLayout.LayoutParams;
         import android.widget.TextView;
+        import android.widget.Toast;
+
+        import java.util.regex.Matcher;
+        import java.util.regex.Pattern;
 
         import cn.anline.phpman.R;
         import cn.anline.qrcode.decode.DecodeThread;
@@ -25,8 +34,7 @@ public class ResultActivity extends Activity {
 
         Bundle extras = getIntent().getExtras();
 
-        mResultImage = (ImageView) findViewById(R.id.result_image);
-        mResultText = (TextView) findViewById(R.id.result_text);
+
 
         if (null != extras) {
             int width = extras.getInt("width");
@@ -37,20 +45,37 @@ public class ResultActivity extends Activity {
             lps.leftMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics());
             lps.rightMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics());
 
-            mResultImage.setLayoutParams(lps);
+
 
             String result = extras.getString("result");
-            mResultText.setText(result);
 
-            Bitmap barcode = null;
-            byte[] compressedBitmap = extras.getByteArray(DecodeThread.BARCODE_BITMAP);
-            if (compressedBitmap != null) {
-                barcode = BitmapFactory.decodeByteArray(compressedBitmap, 0, compressedBitmap.length, null);
-                // Mutable copy:
-                barcode = barcode.copy(Bitmap.Config.RGB_565, true);
+            Pattern pattern=Pattern.compile("http://(([a-zA-z0-9]|-){1,}\\.){1,}[a-zA-z0-9]{1,}-*");
+            Matcher matcher=pattern.matcher(result);
+            if(matcher.find()){
+                System.out.print(result + "扫描结果为网址！");
+                Toast.makeText(getApplicationContext(),"扫描结果为链接网址："+result,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"正在为您加载："+result,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"加载速度取决于网络访问速度，请您耐心等候",Toast.LENGTH_LONG).show();
+//                Uri rsUri = Uri.parse(result);
+                WebView webView = (WebView)findViewById(R.id.webView_rsQR);
+                webView.loadUrl(result);
+                webView.setWebViewClient(new WebViewClient() {
+                    @Override
+                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                        return super.shouldOverrideUrlLoading(view, url);
+                    }
+                });
+            }else{
+                Intent rsQrtextShow =new Intent(ResultActivity.this,ResultTextShowActivity.class);
+                rsQrtextShow.putExtra("rsText",result);
+                Toast.makeText(getApplicationContext(),"扫描结果为文本信息",Toast.LENGTH_SHORT).show();
+                startActivity(rsQrtextShow);
+
             }
 
-            mResultImage.setImageBitmap(barcode);
+
+
+
         }
     }
 

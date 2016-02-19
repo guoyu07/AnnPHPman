@@ -30,6 +30,14 @@ public class AnnHome extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ann_home);
+
+        Toast.makeText(getApplicationContext(),"非常感谢您的下载与安装",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"初始版本，做的粗糙",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"本程序不耗费CPU和内存，暂时没有需求敬请保留",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"极客契约网站上线之后，APP正式版将完爆所有安卓编程学习工具",Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"本屌正在玩命开发中，让我们一起期待吧",Toast.LENGTH_LONG).show();
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setOnClickListener(new View.OnClickListener() {
