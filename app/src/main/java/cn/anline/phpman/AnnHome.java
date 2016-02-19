@@ -22,6 +22,8 @@ import android.widget.Toast;
 import java.net.URI;
 import java.util.List;
 
+import cn.anline.qrcode.QRcodeIndexActivity;
+
 public class AnnHome extends AppCompatActivity {
 
     @Override
@@ -110,8 +112,10 @@ private boolean isAvilible( Context context, String packageName )
         }
         if (id == R.id.action_scanQRcode) {
 //                扫一扫
-            Toast.makeText(getApplicationContext(),"网站暂未上线，扫码链接暂时无法处理",Toast.LENGTH_SHORT).show();
-            Toast.makeText(getApplicationContext(),"网站上线，将支持客户端扫描网站二维码",Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(),"网站暂未上线，扫码链接暂时无法处理",Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(),"网站上线，将支持客户端扫描网站二维码",Toast.LENGTH_SHORT).show();
+            Intent goQRcode = new Intent(AnnHome.this, QRcodeIndexActivity.class);
+            startActivity(goQRcode);
             return true;
         }
         if (id == R.id.action_compile) {

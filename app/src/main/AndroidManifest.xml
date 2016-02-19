@@ -4,7 +4,21 @@
     android:versionCode="1"
     android:versionName="0.1-Beta"
     >
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -17,7 +31,7 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
-
+    <meta-data android:name="channel" android:value="360"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -47,6 +61,12 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"></activity>
+
+        <activity
+            android:name="cn.anline.qrcode.QRcodeIndexActivity"
+            android:theme="@style/Base.Theme.AppCompat.Dialog" />
+        <activity android:name="cn.anline.qrcode.ScannerActivity" />
+        <activity android:name="cn.anline.qrcode.ResultActivity"></activity>
 
     </application>
 

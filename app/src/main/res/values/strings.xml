@@ -11,7 +11,7 @@
     <string name="title_activity_about">关于安浪</string>
     <string name="title_activity_settings">设置</string>
     <string name="about">安浪创想：从事互联网技术产品研发，专注于信息技术领域的高端商业资源开发，对接任何行业的信息化建设，能与任何企业和组织构建信息化发展平台，助力企业和组织快速发展，科学可持续发展。是一个技术型+创新型+公益型平台，欢迎各行业的朋友加入我们，让我们合作、共赢！  </string>
-
+    <string name="scan_tips">\"将二维码图片对准扫描框即可自动扫描\"</string>
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
