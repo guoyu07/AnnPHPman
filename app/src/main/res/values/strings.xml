@@ -5,7 +5,7 @@
     <string name="action_website">官网</string>
     <string name="action_taobao">淘宝店</string>
     <string name="action_scanQRcode">扫一扫</string>
-    <string name="action_compile">全能编译器</string>
+    <string name="action_compile">PHP编译器</string>
     <string name="action_wechat">官方微信</string>
     <string name="action_exit">退出程序</string>
     <string name="title_activity_about">关于安浪</string>

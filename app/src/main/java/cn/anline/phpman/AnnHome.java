@@ -12,6 +12,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -128,10 +129,13 @@ private boolean isAvilible( Context context, String packageName )
         }
         if (id == R.id.action_compile) {
 //                编译器
-            Toast.makeText(getApplicationContext(),"编译器将在下一个版本中推出",Toast.LENGTH_SHORT).show();
-            Toast.makeText(getApplicationContext(),"极客契约网站上线之后，将推出完美阅读版本",Toast.LENGTH_SHORT).show();
-            Toast.makeText(getApplicationContext(),"这将需要很长的一段开发时间",Toast.LENGTH_SHORT).show();
-            Toast.makeText(getApplicationContext(),"此版本下载量越大，新版本我们将有更大的信心和热情，所有请多多支持！！！",Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(),"编译器将在下一个版本中推出",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"正在启动PHP编译器",Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(),"极客契约网站上线之后，将推出完美阅读版本",Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(),"这将需要很长的一段开发时间",Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(),"此版本下载量越大，新版本我们将有更大的信心和热情，所有请多多支持！！！",Toast.LENGTH_SHORT).show();
+            Intent goPHPcompile = new Intent(AnnHome.this,PHPcompileActivity.class);
+            startActivity(goPHPcompile);
             return true;
         }
         if (id == R.id.action_taobao) {
@@ -185,6 +189,22 @@ private boolean isAvilible( Context context, String packageName )
         }
         return super.onOptionsItemSelected(item);
     }
+    private long mExitTime;
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
 
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                Object mHelperUtils;
+                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                mExitTime = System.currentTimeMillis();
+
+            } else {
+//                finish();
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
 }

@@ -71,7 +71,8 @@
             android:theme="@style/Base.Theme.AppCompat.Dialog" />
         <activity android:name="cn.anline.qrcode.ScannerActivity" />
         <activity android:name="cn.anline.qrcode.ResultActivity" />
-        <activity android:name="cn.anline.qrcode.ResultTextShowActivity"></activity>
+        <activity android:name="cn.anline.qrcode.ResultTextShowActivity" />
+        <activity android:name=".PHPcompileActivity"></activity>
     </application>
 
 </manifest>
